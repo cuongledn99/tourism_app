@@ -1,8 +1,10 @@
 var router = require("express").Router();
 var mongoose = require('mongoose');
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
+router.get('/', async function(req, res, next) {
+  const locations= await mongoose.model('locations').find();
+  console.log(locations);
+  res.render('index', { locations });
 });
 
 //router.use('/locations',require('./locations'));

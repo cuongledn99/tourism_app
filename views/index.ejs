@@ -1,11 +1,220 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <title><%= title %></title>
-    <link rel='stylesheet' href='/stylesheets/style.css' />
-  </head>
-  <body>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
-  </body>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+        />
+        <meta name="description" content="" />
+        <meta name="author" content="" />
+
+        <title>Du_Lich</title>
+
+        <!-- Bootstrap core CSS -->
+        <link href="stylesheets/css/bootstrap.min.css" rel="stylesheet" />
+
+        <!-- Custom styles for this template -->
+        <link href="stylesheets/css/style.css" rel="stylesheet" />
+    </head>
+
+    <body>
+        <!-- Navigation -->
+        <nav class="navbar navbar-expand-lg navbar-dark bg-info fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#">Du Lịch</a>
+                <button
+                    class="navbar-toggler"
+                    type="button"
+                    data-toggle="collapse"
+                    data-target="#navbarResponsive"
+                    aria-controls="navbarResponsive"
+                    aria-expanded="false"
+                    aria-label="Toggle navigation"
+                >
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+
+        <!-- Page Content -->
+        <div class="container">
+            <div class="row">
+                <!-- Blog Entries Column -->
+                <div class="col-md-8">
+                    <h1 class="my-4">
+                        Địa điểm du lịch
+                    </h1>
+                    <% locations.forEach(el => { %>
+                      <div class="card mb-4">
+                        
+                          <div class="card-body"><a id="<%=el._id%>">
+                              <h2 class="card-title"><%=el.name%></h2>
+                              <img
+                              class="card-img-top"
+                              src="<%=el.imageLink%>"
+                              alt="<%=el.name%>"
+                          />
+                              <p class="card-text">
+                                  <%=el.shortDescription%>
+                              </p>
+                              <a href="#" class="btn btn-primary"
+                                  >Read More &rarr;</a
+                              >
+                          </div>
+                          </a>
+                      </div>
+                    <% }) %>
+                    <!-- Blog Post -->
+                    <!-- <div class="card mb-4">
+                        
+                        <div class="card-body"><a id="diadiem1">
+                            <h2 class="card-title">Post Title</h2>
+                            <img
+                            class="card-img-top"
+                            src="http://placehold.it/750x300"
+                            alt="Card image cap"
+                        />
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Reiciendis aliquid atque,
+                                nulla? Quos cum ex quis soluta, a laboriosam.
+                                Dicta expedita corporis animi vero voluptate
+                                voluptatibus possimus, veniam magni quis!
+                            </p>
+                            <a href="#" class="btn btn-primary"
+                                >Read More &rarr;</a
+                            >
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on January 1, 2017 by
+                            <a href="#">Start Bootstrap</a>
+                        </div>
+                        </a>
+                    </div>
+
+                    
+                    <div class="card mb-4">
+                        
+                        <div class="card-body"><a id="diadiem2">
+                            <h2 class="card-title">Post Title</h2>
+                            <img
+                            class="card-img-top"
+                            src="http://placehold.it/750x300"
+                            alt="Card image cap"
+                        />
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Reiciendis aliquid atque,
+                                nulla? Quos cum ex quis soluta, a laboriosam.
+                                Dicta expedita corporis animi vero voluptate
+                                voluptatibus possimus, veniam magni quis!
+                            </p>
+                            <a href="#" class="btn btn-primary"
+                                >Read More &rarr;</a
+                            >
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on January 1, 2017 by
+                            <a href="#">Start Bootstrap</a>
+                        </div>
+                        </a>
+                    </div>
+
+                    
+                    <div class="card mb-4">
+                        <div class="card-body"><a id="diadiem3">
+                            <h2 class="card-title">Post Title</h2>
+                            <img
+                            class="card-img-top"
+                            src="http://placehold.it/750x300"
+                            alt="Card image cap"
+                        />
+                            <p class="card-text">
+                                Lorem ipsum dolor sit amet, consectetur
+                                adipisicing elit. Reiciendis aliquid atque,
+                                nulla? Quos cum ex quis soluta, a laboriosam.
+                                Dicta expedita corporis animi vero voluptate
+                                voluptatibus possimus, veniam magni quis!
+                            </p>
+                            <a href="#" class="btn btn-primary"
+                                >Read More &rarr;</a
+                            >
+                        </div>
+                        <div class="card-footer text-muted">
+                            Posted on January 1, 2017 by
+                            <a href="#">Start Bootstrap</a>
+                        </div>
+                    </a>
+                    </div> -->
+
+                    <!-- Pagination -->
+                    <ul class="pagination justify-content-center mb-4">
+                        <li class="page-item">
+                            <a class="page-link" href="#">&larr; Older</a>
+                        </li>
+                        <li class="page-item disabled">
+                            <a class="page-link" href="#">Newer &rarr;</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- Sidebar Widgets Column -->
+                <div class="col-md-4">
+                    <!-- Search Widget -->
+                    <div class="card my-4">
+                        <h5 class="card-header">Chọn địa điểm</h5>
+                        <div class="card-body">
+                            <div class="input-group">
+                                
+                                    <div class="btn-group">
+                                        <button class="btn btn-primary dropdown-toggle"
+                                          type="button"
+                                          id="dropdownMenuButton" data-toggle="dropdown">
+                                        Địa điểm
+                                        </button>
+                                        <div class="dropdown-menu">
+                                          <% locations.forEach(el => { %>
+                                            <a class="dropdown-item" href="#<%=el._id%>"><%=el.name%></a>
+                                          <% }) %>
+                                            <!-- <a class="dropdown-item" href="#diadiem1">Địa Điểm 1</a>
+                                            <a class="dropdown-item" href="#diadiem2">Địa điểm 2</a>
+                                            <a class="dropdown-item" href="#diadiem3">Địa điểm 3</a>
+                                            <a class="dropdown-item" href="#">Địa điểm 4</a>
+                                            <a class="dropdown-item" href="#">Địa điểm 5</a> -->
+                                        </div>
+                                    </div>
+                                </span>
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Side Widget -->
+                    <div class="card my-4">
+                        <h5 class="card-header">Mô Tả</h5>
+                        <div class="card-body">
+                            Đây là trang du lịch mô tả những địa điểm du lịch hấp dẫn nhất Việt Nam.
+                            Bạn có thể tham khảo tại đây!
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.row -->
+        </div>
+        <!-- /.container -->
+
+        <!-- Footer -->
+        <footer class="py-5 bg-dark">
+            <div class="container">
+                <p class="m-0 text-center text-white">
+                    Copyright &copy; Your Website 2019
+                </p>
+            </div>
+            <!-- /.container -->
+        </footer>
+
+        <!-- Bootstrap core JavaScript -->
+        <script src="stylesheets/js/jquery.min.js"></script>
+        <script src="stylesheets/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>
