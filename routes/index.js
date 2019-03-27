@@ -1,9 +1,9 @@
 var router = require("express").Router();
 var mongoose = require('mongoose');
+
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   const locations= await mongoose.model('locations').find();
-  console.log(locations);
   res.render('index', { locations });
 });
 
