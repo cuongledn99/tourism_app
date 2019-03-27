@@ -10,6 +10,20 @@ router.get('/', async function(req, res, next) {
   res.render('index', { locations });
 });
 
+
+//get location by id
+router.get('/:location_id', async function(req, res, next) {
+  const locations= await mongoose.model('locations').findById(req.params.location_id).populate({
+    path:'feedbacks',
+    select:'content'
+  }).exec();
+  console.log('get by id');
+  console.log(locations);
+  res.json({
+    locations
+  })
+});
+
 // get data base on city
 router.get('/:city',async (req,res)=>{
   const locations= await mongoose.model('locations').find({city:req.params.city});
