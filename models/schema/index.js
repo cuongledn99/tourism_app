@@ -1,5 +1,6 @@
 module.exports = {
     
-    locations:require("./locations")
+    locations:require("./locations"),
+    feedbacks:require('./feedbacks'),
   };
   

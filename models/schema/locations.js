@@ -18,7 +18,13 @@ var locations = new mongoose.Schema({
     },
     imageLink:{
         type:String
-    }
+    },
+    feedbacks:[
+        {
+            type:mongoose.Schema.Types.ObjectId,
+            ref:'feedbacks'
+        }
+    ]
 });
 
 module.exports = locations;
