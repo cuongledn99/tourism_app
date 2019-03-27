@@ -2,14 +2,14 @@ var router = require("express").Router();
 var mongoose = require('mongoose');
 var uploadFile = require('../services/uploadFile');
 /* GET home page. */
-router.get('/', async function (req, res, next) {
-  const locations = await mongoose.model('locations').find().populate({
-    path: 'feedbacks',
-    select: 'content'
-  }).exec();
-  console.log("TCL: locations", JSON.stringify(locations))
-  res.render('index', { locations });
-});
+// router.get('/', async function (req, res, next) {
+//   const locations = await mongoose.model('locations').find().populate({
+//     path: 'feedbacks',
+//     select: 'content'
+//   }).exec();
+//   console.log("TCL: locations", JSON.stringify(locations))
+//   res.render('index', { locations });
+// });
 
 
 //get location by id
@@ -26,16 +26,24 @@ router.get('/:location_id', async function (req, res, next) {
 });
 
 // get data base on city
-router.get('/:city', async (req, res) => {
-  try {
-    console.log('inside get city')
-    const locations = await mongoose.model('locations').find({ city: req.params.city });
-    console.log("TCL: locations", locations)
-    res.render('index', { locations });
-  } catch (error) {
+router.get('/:city',  (req, res) => {
+  // try {
+  //   console.log('inside get city')
+  //   const locations = await mongoose.model('locations').find({ city: req.params.city });
+  //   console.log("TCL: locations", locations)
+  //   res.render('index', { locations });
+  // } catch (error) {
 
-  }
+  // }
+  res.jsonn({
+    mess:'ok'
+  })
 
+})
+router.get('/dm',function(req,res){
+  res.json({
+    mess:'ok'
+  })
 })
 
 //add new feedback
@@ -61,6 +69,7 @@ router.post('/feedback/:location_id', async (req, res) => {
 router.post('/location', uploadFile.StoreFile().any(), async (req, res) => {
   try {
     let { name, address, shortDescription, city, content } = req.body;
+    
     let data = await mongoose.model('locations').create({
       name: name,
       address: address,
