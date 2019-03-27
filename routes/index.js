@@ -1,5 +1,6 @@
 var router = require("express").Router();
 var mongoose = require('mongoose');
+var uploadFile=require('../services/uploadFile');
 /* GET home page. */
 router.get('/', async function(req, res, next) {
   const locations= await mongoose.model('locations').find().populate({
@@ -50,5 +51,22 @@ router.post('/feedback/:location_id',async(req,res)=>{
 })
 
 //insert location
-
+router.post('/location',uploadFile.StoreFile().any(),async(req,res)=>{
+  try {
+    let{name,address,shortDescription,city,content}=req.body;
+    let data=await mongoose.model('locations').create({
+      name:name,
+      address:address,
+      shortDescription:shortDescription,
+      city:city,
+      content:content
+    });
+    res.json({
+      status:'ok',
+      message:'insert location success'
+    })
+  } catch (error) {
+    
+  }
+})
 module.exports = router;
