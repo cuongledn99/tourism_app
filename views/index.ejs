@@ -4,7 +4,8 @@
         <meta charset="utf-8" />
         <meta
             name="viewport"
-            content="width=device-width, initial-scale=1, shrink-to-fit=no"
+            content="width=
+            ce-width, initial-scale=1, shrink-to-fit=no"
         />
         <meta name="description" content="" />
         <meta name="author" content="" />
@@ -58,9 +59,46 @@
                               <p class="card-text">
                                   <%=el.shortDescription%>
                               </p>
-                              <a href="#" class="btn btn-primary"
-                                  >Read More &rarr;</a
-                              >
+                              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog" role="document">
+                                      <div class="modal-content">
+                                        <div class="modal-header">
+                                          <h5 class="modal-title" id="exampleModalLabel"> Hoàng thành Thăng  Long</h5>
+                                          
+                                          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                          </button>
+                                        </div>
+                                        <div class="modal-body">
+                                                <ul>
+                                                        <li>Thành phố Hà Nội</li>
+                                                        <li> <b>Mô tả </b> <p>Hoàng Thành Thăng Long có diện tích khá là rộng, có thể bạn sẽ bắt gặp những đoàn sinh viên đi chụp ảnh kỷ yếu hay lễ hội sách hay văn hóa, chợ của Hà Nội xưa được tổ chức tại đây<p><li></li>
+                                               
+                                        </div>
+                                        <center><p><b>Feedback</b></p></center>
+                                        <div class="modal-footer">
+                                                <div class="card my-4">
+                                                        
+                                                        <div class="card-body">
+                                                            Đây là trang du lịch mô tả những địa điểm du lịch hấp dẫn nhất Việt Nam.
+                                                            Bạn có thể tham khảo tại đây!
+                                                        </div>
+                                                    </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                                <div class="commentBodyContainer"><textarea name="commentBody" rows="2" cols="48" id="commentBodyField" onkeypress="BLOG_CMT_onCommentBodyChange()" placeholder="Nhập nhận xét của bạn..."></textarea><br></div>
+                                        <button type="button" class="btn btn-primary">Chấp nhận</button>
+                                        </div>
+                                       
+                                        <div class="modal-footer">
+                                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+                                        Xem thêm
+                                </button>
                           </div>
                           </a>
                       </div>
@@ -166,22 +204,21 @@
                         <h5 class="card-header">Chọn địa điểm</h5>
                         <div class="card-body">
                             <div class="input-group">
-                                
                                     <div class="btn-group">
                                         <button class="btn btn-primary dropdown-toggle"
                                           type="button"
                                           id="dropdownMenuButton" data-toggle="dropdown">
-                                        Địa điểm
+                                        Thành phố
                                         </button>
                                         <div class="dropdown-menu">
-                                          <% locations.forEach(el => { %>
+                                          <!--<% locations.forEach(el => { %>
                                             <a class="dropdown-item" href="#<%=el._id%>"><%=el.name%></a>
-                                          <% }) %>
-                                            <!-- <a class="dropdown-item" href="#diadiem1">Địa Điểm 1</a>
-                                            <a class="dropdown-item" href="#diadiem2">Địa điểm 2</a>
-                                            <a class="dropdown-item" href="#diadiem3">Địa điểm 3</a>
-                                            <a class="dropdown-item" href="#">Địa điểm 4</a>
-                                            <a class="dropdown-item" href="#">Địa điểm 5</a> -->
+                                          <% }) %>-->
+                                             <a class="dropdown-item" href="#">Đà Lạt</a>
+                                            <a class="dropdown-item" href="#">Thành phố Hồ Chí Minh</a>
+                                            <a class="dropdown-item" href="#">Hà Nội</a>
+                                            <a class="dropdown-item" href="#">Huế</a>
+                                            
                                         </div>
                                     </div>
                                 </span>
@@ -189,6 +226,19 @@
                             </div>
                         </div>
                     </div>
+                    <div class="card my-4">
+                            <h5 class="card-header">Thêm đề xuất</h5>
+                            <div class="card-body">
+                                <div class="input-group">
+                                        <div class="btn-group">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2" data-whatever="@mdo">Chọn đề xuất</button>
+                                            </div>
+                                           
+                                        </div>
+                                    </span>
+                                    
+                                </div>
+                            </div>
                     <!-- Side Widget -->
                     <div class="card my-4">
                         <h5 class="card-header">Mô Tả</h5>
@@ -202,16 +252,36 @@
             <!-- /.row -->
         </div>
         <!-- /.container -->
-
-        <!-- Footer -->
-        <footer class="py-5 bg-dark">
-            <div class="container">
-                <p class="m-0 text-center text-white">
-                    Copyright &copy; Your Website 2019
-                </p>
+        
+      <!-- Modal -->
+      <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLabel">Chọn đề xuất</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form>
+                    <div class="form-group">
+                      <label for="recipient-name" class="col-form-label">Nhập tên địa điểm đề xuất</label>
+                      <input type="text" class="form-control" id="recipient-name">
+                    </div>
+                  </form>
+                </div>
+                <center><p><b>Ảnh</b></p></center>
+                <div class="modal-footer">
+                       
+                      </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Choose File</button>
+                  <button type="button" class="btn btn-primary">Gửi</button>
+                </div>
+              </div>
             </div>
-            <!-- /.container -->
-        </footer>
+          </div>
 
         <!-- Bootstrap core JavaScript -->
         <script src="stylesheets/js/jquery.min.js"></script>
