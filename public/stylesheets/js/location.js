@@ -1,23 +1,36 @@
 const key = 'ba2e38fabf6949fc8e3a82a7515a925a';
 const getLocation = async () => {
-  if (navigator.geolocation) {
-    navigator.geolocation.getCurrentPosition(async (position) => {
-      const latitute = position.coords.latitude;
-      const longitude = position.coords.longitude;
-      let request = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitute},${longitude}&key=${key}`);
-      const data = await request.json();
-      console.log(data);
-      let cityName = data.results[0].components.city;
-      cityName = cityName.split(' ').join('');
-      /*HoChiMinhCity
-      Hanoi
-      Dalat
-      Hue */
-      console.log(cityName);
-    });
-  } else { 
-    console.log("Geolocation is not supported by this browser.");
-  }
+    if (navigator.geolocation) {
+
+        await saveCoordinatesToLocalStorage();
+        let latitude = localStorage.getItem('latitude')
+        let longitude = localStorage.getItem('longitude')
+
+        let city= await getCity(latitude, longitude)
+        
+        /*HoChiMinhCity
+        Hanoi
+        Dalat
+        Hue */
+        return city;
+    } else {
+        console.log("Geolocation is not supported by this browser.");
+        return 'Can not get location';
+    }
 }
-getLocation();
+const getCity = async (latitude, longitude) => {
+    let request = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude},${longitude}&key=${key}`);
+    const data = await request.json();
+    let cityName = data.results[0].components.city ? data.results[0].components.city:data.results[0].components.town;
+    cityName = cityName.split(' ').join('');
+    localStorage.setItem('city', cityName);
+    return cityName;
+}
+const saveCoordinatesToLocalStorage = async () => {
+    await navigator.geolocation.getCurrentPosition(position => {
+        localStorage.setItem('latitude', position.coords.latitude);
+        localStorage.setItem('longitude', position.coords.longitude);
+    })
+}
+
 
