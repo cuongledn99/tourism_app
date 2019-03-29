@@ -21,6 +21,7 @@ const getLocation = async () => {
 const getCity = async (latitude, longitude) => {
     let request = await fetch(`https://api.opencagedata.com/geocode/v1/json?q=${latitude},${longitude}&key=${key}`);
     const data = await request.json();
+	console.log("TCL: getCity -> data", data)
     let cityName = data.results[0].components.city ? data.results[0].components.city:data.results[0].components.town;
     cityName = cityName.split(' ').join('');
     localStorage.setItem('city', cityName);
